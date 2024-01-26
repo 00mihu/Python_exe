@@ -1,0 +1,49 @@
+import pandas as pd
+
+df = pd.read_csv('https://sciencedata.dk/shared/825e999a5c13fd22d28d4289fa899ba1?download', sep='|')
+
+df.at[0, 'Text']
+
+df['ID']
+
+type(df['samling'])
+
+df.dtypes
+
+L1 = [1,2,3,4,5]
+L2 = ['en', 'to', 'tre', 'fire', 'fem']
+
+new_df = pd.DataFrame({'col1' : L1,
+                       'col2' : L2})
+new_df
+
+L3 = [1, 'to', 3, 'fire', 5]
+new_df['col3'] = L3
+new_df
+
+df['samling'].value_counts()
+
+df['Party'].value_counts()
+
+df_s = df[df['Party']] == 's'
+
+df['min'] = df['Time'] /60
+
+df
+
+def get_last_name(text):
+    last_name = text.split()
+    last_name = last_name[-1]
+    return last_name
+
+df['Last_name'] = df['Name'].apply(lambda x : get_last_name(x))
+
+df
+
+import seaborn as sns
+
+sns.countplot(y = df['Subcject 1'])
+
+df['Name'].value_counts().head(10)
+df['Time'] == df['Time'] /60 
+
